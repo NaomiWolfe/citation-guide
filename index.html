@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Citation Guide for Midterm Creative Projects</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        secondary: '#F3F4F6',
+                        dark: {
+                            primary: '#7776E7',
+                            secondary: '#2D2D3A'
+                        }
+                    }
+                }
+            }
+        }
+
+        // Check for dark mode
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+
+        .comparison-table {
+            display: none;
+        }
+        
+        .comparison-table.active {
+            display: block;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-200">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <header class="mb-8 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold mb-3 text-primary dark:text-dark-primary">
+                Citation Guide for Midterm Creative Projects
+            </h1>
+            <p class="text-lg text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+                All facts, stats, and ideas from outside sources must be credited for all creative formats. Follow these guidelines to maintain credibility and showcase your research skills!
+            </p>
+        </header>
+
+        <div class="mb-6 bg-primary/10 dark:bg-dark-primary/20 p-4 rounded-lg">
+            <h2 class="text-xl font-semibold mb-2 flex items-center">
+                <i class="fas fa-info-circle mr-2 text-primary dark:text-dark-primary"></i>
+                For All Formats
+            </h2>
+            <ul class="list-disc pl-5 space-y-1">
+                <li>Use at least 3 scholarly sources (books, articles, or reputable websites).</li>
+                <li>For images, add "Image: [Source]" near them (e.g., "Image: Unsplash").</li>
+                <li>Image citation format: Creator's Last Name, First Initial. Middle Initial. (Year). Title of image [Photograph]. Source. URL.</li>
+            </ul>
+        </div>
+
+        <div class="mb-8">
+            <div class="flex flex-wrap border-b border-gray-300 dark:border-gray-700">
+                <button id="view-all-btn" class="tab-btn px-4 py-3 font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-t-lg mr-1 transition-colors">
+                    <i class="fas fa-table mr-1"></i> View All
+                </button>
+                <button id="slide-show-btn" class="tab-btn px-4 py-3 font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-t-lg mr-1 transition-colors active text-primary dark:text-dark-primary bg-gray-100 dark:bg-gray-800">
+                    <i class="fas fa-desktop mr-1"></i> Slide Show
+                </button>
+                <button id="infographic-btn" class="tab-btn px-4 py-3 font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-t-lg mr-1 transition-colors">
+                    <i class="fas fa-chart-pie mr-1"></i> Infographic
+                </button>
+                <button id="poster-btn" class="tab-btn px-4 py-3 font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-t-lg mr-1 transition-colors">
+                    <i class="fas fa-image mr-1"></i> Poster
+                </button>
+                <button id="comic-btn" class="tab-btn px-4 py-3 font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-t-lg mr-1 transition-colors">
+                    <i class="fas fa-book-open mr-1"></i> Comic Strip
+                </button>
+                <button id="paper-btn" class="tab-btn px-4 py-3 font-medium text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-t-lg transition-colors">
+                    <i class="fas fa-file-alt mr-1"></i> Short Paper
+                </button>
+            </div>
+
+            <!-- Comparison Table View -->
+            <div id="comparison-table" class="comparison-table my-4 overflow-x-auto rounded-lg border border-gray-300 dark:border-gray-700">
+                <table class="min-w-full divide-y divide-gray-300 dark:divide-gray-700">
+                    <thead class="bg-gray-100 dark:bg-gray-800">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Format</th>
+                            <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Requirements</th>
+                            <th class="px-4 py-3 text-left text-sm font-semibold text-gray-700 dark:text-gray-300">Citation Options</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-800">
+                        <tr>
+                            <td class="px-4 py-3 text-sm font-medium"><i class="fas fa-desktop mr-2 text-primary dark:text-dark-primary"></i> Slide Show<br>(5-7 slides)</td>
+                            <td class="px-4 py-3 text-sm">APA format for in-text citations or superscripts. Include a "Sources" slide at the end.</td>
+                            <td class="px-4 py-3 text-sm">
+                                <p><strong>Option 1:</strong> In-text citations (Author, Year)</p>
+                                <p><strong>Option 2:</strong> Superscript numbers¹ with reference list</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 text-sm font-medium"><i class="fas fa-chart-pie mr-2 text-primary dark:text-dark-primary"></i> Infographic</td>
+                            <td class="px-4 py-3 text-sm">Cite thoroughly, but APA not required. Space and clarity are priorities.</td>
+                            <td class="px-4 py-3 text-sm">
+                                <p><strong>Option 1:</strong> "Sources" section at bottom with "Author (Year)"</p>
+                                <p><strong>Option 2:</strong> Superscript numbers¹ with sources list</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 text-sm font-medium"><i class="fas fa-image mr-2 text-primary dark:text-dark-primary"></i> Poster<br>(Drawn or Digital)</td>
+                            <td class="px-4 py-3 text-sm">Cite thoroughly, but APA not required. Visual design prioritizes brevity.</td>
+                            <td class="px-4 py-3 text-sm">
+                                <p><strong>Option 1:</strong> "Sources" box in corner with "Author (Year)"</p>
+                                <p><strong>Option 2:</strong> Superscript numbers¹ with source list in corner</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 text-sm font-medium"><i class="fas fa-book-open mr-2 text-primary dark:text-dark-primary"></i> Comic Strip</td>
+                            <td class="px-4 py-3 text-sm">Cite thoroughly, but APA not required. Limited space due to storytelling format.</td>
+                            <td class="px-4 py-3 text-sm">
+                                <p><strong>Option 1:</strong> "Sources" note on final panel with "Author (Year)"</p>
+                                <p><strong>Option 2:</strong> Superscript numbers¹ in speech bubbles with source list</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 text-sm font-medium"><i class="fas fa-file-alt mr-2 text-primary dark:text-dark-primary"></i> Short Paper<br>(2-3 pages)</td>
+                            <td class="px-4 py-3 text-sm">APA format for in-text citations with "References" section at end.</td>
+                            <td class="px-4 py-3 text-sm">
+                                <p><strong>In-text:</strong> (Author, Year)</p>
+                                <p><strong>References section:</strong> Full APA citation format</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Slide Show Tab -->
+            <div id="slide-show-tab" class="tab-content active bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-300 dark:border-gray-700 fade-in">
+                <div class="flex items-start gap-4 flex-col md:flex-row">
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold mb-4 flex items-center text-primary dark:text-dark-primary">
+                            <i class="fas fa-desktop mr-3"></i> Slide Show (5-7 slides)
+                        </h2>
+                        <div class="mb-4">
+                            <h3 class="text-lg font-semibold mb-2">Requirement:</h3>
+                            <p>Use APA format for in-text citations or superscripts throughout. Include a "Sources" slide at the end.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                                <h3 class="text-lg font-semibold mb-2">Option 1: In-text Citations</h3>
+                                <p>Cite as (Author, Year), e.g., (Goffman, 1959), then list full references in APA format on the final slide.</p>
+                            </div>
+                            <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                                <h3 class="text-lg font-semibold mb-2">Option 2: Superscript</h3>
+                                <p>Use small superscript numbers<sup>1</sup> next to facts, then list full references in APA format on the final slide.</p>
+                                <p class="mt-2 text-sm italic">If choosing this option, number your sources appropriately.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/5 w-full">
+                        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold mb-2">Example:</h3>
+                            <div class="border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 p-3 mb-2">
+                                <p class="text-sm">Slide Content:</p>
+                                <p class="mt-1">"According to symbolic interactionism, people create meaning through their interactions with others (Goffman, 1959)."</p>
+                            </div>
+                            <div class="border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 p-3">
+                                <p class="text-sm">Final Slide - References:</p>
+                                <p class="mt-1 text-sm">Goffman, E. (1959). <em>The presentation of self in everyday life</em>. Doubleday.</p>
+                                <p class="mt-1 text-sm">Pew Research Center. (2023). <em>Social media use in 2023</em>. https://www.pewresearch.org/internet/2023/...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Infographic Tab -->
+            <div id="infographic-tab" class="tab-content bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-300 dark:border-gray-700">
+                <div class="flex items-start gap-4 flex-col md:flex-row">
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold mb-4 flex items-center text-primary dark:text-dark-primary">
+                            <i class="fas fa-chart-pie mr-3"></i> Infographic
+                        </h2>
+                        <div class="mb-4">
+                            <h3 class="text-lg font-semibold mb-2">Requirement:</h3>
+                            <p>Cite thoroughly, but APA is not needed—space is tight, so clarity matters most.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                                <h3 class="text-lg font-semibold mb-2">Option 1: Sources Section</h3>
+                                <p>Include a small "Sources" section at the bottom, e.g., "Author (Year)" (Durkheim, 1897) or "Website, Year" (World Inequality Database, 2023).</p>
+                            </div>
+                            <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                                <h3 class="text-lg font-semibold mb-2">Option 2: Superscript Numbers</h3>
+                                <p>Use superscript numbers<sup>1</sup> next to stats/facts, then list sources at the bottom (e.g., <sup>1</sup> U.S. Census Bureau, 2022).</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/5 w-full">
+                        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold mb-2">Example:</h3>
+                            <div class="border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 p-3 mb-2">
+                                <p class="text-sm">Infographic Content:</p>
+                                <p class="mt-1">"72% of Americans used social media in 2023<sup>1</sup>"</p>
+                            </div>
+                            <div class="border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 p-3">
+                                <p class="text-sm">Sources Section:</p>
+                                <p class="mt-1 text-sm"><sup>1</sup> Pew Research Center, 2023</p>
+                                <p class="mt-1 text-sm"><sup>2</sup> U.S. Census Bureau, 2022</p>
+                                <p class="mt-1 text-sm"><sup>3</sup> World Inequality Database, 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Poster Tab -->
+            <div id="poster-tab" class="tab-content bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-300 dark:border-gray-700">
+                <div class="flex items-start gap-4 flex-col md:flex-row">
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold mb-4 flex items-center text-primary dark:text-dark-primary">
+                            <i class="fas fa-image mr-3"></i> Poster (Drawn or Digital)
+                        </h2>
+                        <div class="mb-4">
+                            <h3 class="text-lg font-semibold mb-2">Requirement:</h3>
+                            <p>Cite thoroughly, but APA is not needed—visual design prioritizes brevity and impact.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                                <h3 class="text-lg font-semibold mb-2">Option 1: Sources Box</h3>
+                                <p>Add a "Sources" box in a corner, e.g., "Author (Year)" (Goffman, 1959) or "Website, Year" (Pew Research Center, 2023).</p>
+                            </div>
+                            <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                                <h3 class="text-lg font-semibold mb-2">Option 2: Superscript Numbers</h3>
+                                <p>Place superscript numbers<sup>1</sup> by facts, with a small source list in a corner (e.g., <sup>1</sup> Durkheim, 1897).</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/5 w-full">
+                        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold mb-2">Example:</h3>
+                            <div class="border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 p-3 mb-2">
+                                <p class="text-sm">Poster Content:</p>
+                                <p class="mt-1">"Social class remains one of the strongest predictors of educational achievement<sup>1</sup>"</p>
+                            </div>
+                            <div class="border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 p-3">
+                                <p class="text-sm">Sources Box:</p>
+                                <p class="mt-1 text-sm"><sup>1</sup> National Center for Education Statistics, 2023</p>
+                                <p class="mt-1 text-sm"><sup>2</sup> Bourdieu, 1984</p>
+                                <p class="mt-1 text-sm">Image: Unsplash</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comic Strip Tab -->
+            <div id="comic-tab" class="tab-content bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-300 dark:border-gray-700">
+                <div class="flex items-start gap-4 flex-col md:flex-row">
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold mb-4 flex items-center text-primary dark:text-dark-primary">
+                            <i class="fas fa-book-open mr-3"></i> Comic Strip
+                        </h2>
+                        <div class="mb-4">
+                            <h3 class="text-lg font-semibold mb-2">Requirement:</h3>
+                            <p>Cite thoroughly, but APA is not needed—storytelling format limits space for formal citations.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                                <h3 class="text-lg font-semibold mb-2">Option 1: Sources Note</h3>
+                                <p>Add a small "Sources" note on the final panel or back, e.g., "Author (Year)" (Goffman, 1959) or "Website, Year" (Pew Research Center, 2023).</p>
+                            </div>
+                            <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                                <h3 class="text-lg font-semibold mb-2">Option 2: Superscript in Speech Bubbles</h3>
+                                <p>Use superscript numbers<sup>1</sup> in speech bubbles, then list sources in a note (e.g., <sup>1</sup> U.S. Census Bureau, 2022).</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/5 w-full">
+                        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold mb-2">Example:</h3>
+                            <div class="border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 p-3 mb-2">
+                                <p class="text-sm">Comic Speech Bubble:</p>
+                                <p class="mt-1">"Did you know that 68% of Americans use Facebook?<sup>1</sup>"</p>
+                            </div>
+                            <div class="border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 p-3">
+                                <p class="text-sm">Sources Note (Final Panel):</p>
+                                <p class="mt-1 text-sm"><sup>1</sup> Pew Research Center, 2023</p>
+                                <p class="mt-1 text-sm"><sup>2</sup> World Inequality Database, 2023</p>
+                                <p class="mt-1 text-sm">Character designs inspired by Scott McCloud, 1993</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Short Paper Tab -->
+            <div id="paper-tab" class="tab-content bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-300 dark:border-gray-700">
+                <div class="flex items-start gap-4 flex-col md:flex-row">
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold mb-4 flex items-center text-primary dark:text-dark-primary">
+                            <i class="fas fa-file-alt mr-3"></i> Short Paper (2-3 pages)
+                        </h2>
+                        <div class="mb-4">
+                            <h3 class="text-lg font-semibold mb-2">Requirement:</h3>
+                            <p>Use APA format for in-text citations and a "References" section at the end.</p>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                                <h3 class="text-lg font-semibold mb-2">In-text Citations</h3>
+                                <p>Cite as (Author, Year), e.g., (Durkheim, 1897).</p>
+                            </div>
+                            <div class="bg-gray-100 dark:bg-gray-700 p-4 rounded-lg">
+                                <h3 class="text-lg font-semibold mb-2">References Section</h3>
+                                <p>List full citations, e.g., Durkheim, E. (1897). Suicide: A study in sociology. Free Press.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:w-2/5 w-full">
+                        <div class="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold mb-2">Example:</h3>
+                            <div class="border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 p-3 mb-2">
+                                <p class="text-sm">Paper Content:</p>
+                                <p class="mt-1">Durkheim (1897) argued that suicide rates were influenced by social factors rather than individual psychology. Recent studies support this view, showing correlations between economic downturns and increased suicide rates (Pew Research Center, 2023).</p>
+                            </div>
+                            <div class="border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800 p-3">
+                                <p class="text-sm">References Section:</p>
+                                <p class="mt-1 text-sm">Durkheim, E. (1897). <em>Suicide: A study in sociology</em>. Free Press.</p>
+                                <p class="mt-1 text-sm">Pew Research Center. (2023). <em>Economic factors and mental health</em>. https://www.pewresearch.org/social-trends/2023/...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gray-100 dark:bg-gray-800 p-4 rounded-lg">
+            <h2 class="text-xl font-semibold mb-2 flex items-center">
+                <i class="fas fa-lightbulb mr-2 text-yellow-500"></i>
+                Quick Tips
+            </h2>
+            <ul class="list-disc pl-5 space-y-1">
+                <li>Slide shows and short papers need APA for academic rigor.</li>
+                <li>Infographics, posters, and comic strips must cite all sources but can use simpler formats to save space and keep visuals clean.</li>
+                <li>Keep citations consistent and clean for maximum impact.</li>
+            </ul>
+            <div class="mt-4 pt-4 border-t border-gray-300 dark:border-gray-700">
+                <p class="text-sm">Questions? Contact Prof L at nlatini@troy.edu or 404-913-2660.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = {
+                'view-all-btn': 'comparison-table',
+                'slide-show-btn': 'slide-show-tab',
+                'infographic-btn': 'infographic-tab',
+                'poster-btn': 'poster-tab',
+                'comic-btn': 'comic-tab',
+                'paper-btn': 'paper-tab'
+            };
+
+            function setActiveTab(activeTabBtn, activeTabContent) {
+                // Reset all tabs
+                document.querySelectorAll('.tab-btn').forEach(btn => {
+                    btn.classList.remove('active', 'text-primary', 'dark:text-dark-primary', 'bg-gray-100', 'dark:bg-gray-800');
+                });
+                
+                document.querySelectorAll('.tab-content, .comparison-table').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Set active tab
+                const activeBtn = document.getElementById(activeTabBtn);
+                activeBtn.classList.add('active', 'text-primary', 'dark:text-dark-primary', 'bg-gray-100', 'dark:bg-gray-800');
+                
+                const activeContent = document.getElementById(activeTabContent);
+                activeContent.classList.add('active', 'fade-in');
+            }
+            
+            // Add click event listeners to tabs
+            Object.entries(tabs).forEach(([btnId, contentId]) => {
+                document.getElementById(btnId).addEventListener('click', () => {
+                    setActiveTab(btnId, contentId);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
